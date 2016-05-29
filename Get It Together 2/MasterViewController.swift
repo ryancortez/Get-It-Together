@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import EventKit
+
+
 
 class MasterViewController: UITableViewController {
 
+    let myModel = Model()
+    var eventStore: EKEventStore!
+    var reminders: [EKReminder]!
+    
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
 
@@ -30,6 +37,29 @@ class MasterViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
+        
+        self.eventStore = EKEventStore()
+        self.reminders = [EKReminder]()
+        self.eventStore.requestAccessToEntityType(EKEntityType.Reminder) { (granted: Bool, error: NSError?) -> Void in
+            
+            if granted{
+                // 2
+                let predicate = self.eventStore.predicateForRemindersInCalendars(nil)
+                self.eventStore.fetchRemindersMatchingPredicate(predicate, completion: { (reminders: [EKReminder]?) -> Void in
+                    
+                    self.reminders = reminders
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableView.reloadData()
+                    }
+                })
+            }else{
+                print("The app is not permitted to access reminders, make sure to grant permission in the settings and try again")
+            }
+        }
+        
+        enterGenericTasksForTesting()
+        
+        objects = myModel.tasks as [Task]
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +78,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let object = objects[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
@@ -70,8 +100,9 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
+        let object = objects[indexPath.row] as! Task
         cell.textLabel!.text = object.description
+        print(object.description)
         return cell
     }
 
@@ -88,6 +119,41 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+    func enterGenericTasksForTesting() {
+        
+        let newTask1:Task = Task()
+        newTask1.title = "Do laundry"
+        newTask1.note = "Here's a note"
+        newTask1.userTags = ["tag1","tag2"]
+        
+        let newTask2:Task = Task()
+        newTask2.title = "Take out the garbage"
+        newTask2.note = "Here's a second note"
+        newTask2.userTags = ["tag1","tag2"]
+        
+        let newTask3:Task = Task()
+        newTask3.title = "Clean the kitchen"
+        newTask3.note = "Here's a third note"
+        newTask3.userTags = ["tag1","tag2"]
+        
+        
+        myModel.tasks.append(newTask1)
+        myModel.tasks.append(newTask2)
+        myModel.tasks.append(newTask3)
+        
+        var count: Int = 0
+        for task in myModel.tasks{
+            
+            let tempTask: Task = task
+            
+            NSLog("myModel Array Count: \(myModel.tasks.count)")
+            NSLog("myModel Array Object: \(tempTask.description)")
+            NSLog("Task Title: \(tempTask.title)")
+            count += 1
+        }
+    }
+
 
 
 }

@@ -15,6 +15,8 @@
 		9435B2B21CFB823500B1EEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9435B2B01CFB823500B1EEF4 /* LaunchScreen.storyboard */; };
 		9435B2BD1CFB823500B1EEF4 /* Get_It_Together_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2BC1CFB823500B1EEF4 /* Get_It_Together_2Tests.swift */; };
 		9435B2C81CFB823500B1EEF4 /* Get_It_Together_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2C71CFB823500B1EEF4 /* Get_It_Together_2UITests.swift */; };
+		9435B2D71CFB824700B1EEF4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2D51CFB824700B1EEF4 /* Model.swift */; };
+		9435B2D81CFB824700B1EEF4 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2D61CFB824700B1EEF4 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		9435B2C31CFB823500B1EEF4 /* Get It Together 2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Get It Together 2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9435B2C71CFB823500B1EEF4 /* Get_It_Together_2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get_It_Together_2UITests.swift; sourceTree = "<group>"; };
 		9435B2C91CFB823500B1EEF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9435B2D51CFB824700B1EEF4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9435B2D61CFB824700B1EEF4 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				9435B2A51CFB823500B1EEF4 /* AppDelegate.swift */,
 				9435B2A71CFB823500B1EEF4 /* MasterViewController.swift */,
 				9435B2A91CFB823500B1EEF4 /* DetailViewController.swift */,
+				9435B2D51CFB824700B1EEF4 /* Model.swift */,
+				9435B2D61CFB824700B1EEF4 /* Task.swift */,
 				9435B2AB1CFB823500B1EEF4 /* Main.storyboard */,
 				9435B2AE1CFB823500B1EEF4 /* Assets.xcassets */,
 				9435B2B01CFB823500B1EEF4 /* LaunchScreen.storyboard */,
@@ -261,7 +267,9 @@
 			files = (
 				9435B2AA1CFB823500B1EEF4 /* DetailViewController.swift in Sources */,
 				9435B2A81CFB823500B1EEF4 /* MasterViewController.swift in Sources */,
+				9435B2D81CFB824700B1EEF4 /* Task.swift in Sources */,
 				9435B2A61CFB823500B1EEF4 /* AppDelegate.swift in Sources */,
+				9435B2D71CFB824700B1EEF4 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
