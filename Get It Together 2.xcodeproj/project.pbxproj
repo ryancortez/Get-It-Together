@@ -17,6 +17,8 @@
 		9435B2C81CFB823500B1EEF4 /* Get_It_Together_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2C71CFB823500B1EEF4 /* Get_It_Together_2UITests.swift */; };
 		9435B2D71CFB824700B1EEF4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2D51CFB824700B1EEF4 /* Model.swift */; };
 		9435B2D81CFB824700B1EEF4 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2D61CFB824700B1EEF4 /* Task.swift */; };
+		9435B2DA1CFB8BBA00B1EEF4 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2D91CFB8BBA00B1EEF4 /* ReminderCell.swift */; };
+		9435B2DC1CFB918200B1EEF4 /* NewReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9435B2DB1CFB918200B1EEF4 /* NewReminder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		9435B2C91CFB823500B1EEF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9435B2D51CFB824700B1EEF4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9435B2D61CFB824700B1EEF4 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		9435B2D91CFB8BBA00B1EEF4 /* ReminderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
+		9435B2DB1CFB918200B1EEF4 /* NewReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReminder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +109,11 @@
 			children = (
 				9435B2A51CFB823500B1EEF4 /* AppDelegate.swift */,
 				9435B2A71CFB823500B1EEF4 /* MasterViewController.swift */,
+				9435B2DB1CFB918200B1EEF4 /* NewReminder.swift */,
 				9435B2A91CFB823500B1EEF4 /* DetailViewController.swift */,
 				9435B2D51CFB824700B1EEF4 /* Model.swift */,
 				9435B2D61CFB824700B1EEF4 /* Task.swift */,
+				9435B2D91CFB8BBA00B1EEF4 /* ReminderCell.swift */,
 				9435B2AB1CFB823500B1EEF4 /* Main.storyboard */,
 				9435B2AE1CFB823500B1EEF4 /* Assets.xcassets */,
 				9435B2B01CFB823500B1EEF4 /* LaunchScreen.storyboard */,
@@ -266,8 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9435B2AA1CFB823500B1EEF4 /* DetailViewController.swift in Sources */,
+				9435B2DA1CFB8BBA00B1EEF4 /* ReminderCell.swift in Sources */,
 				9435B2A81CFB823500B1EEF4 /* MasterViewController.swift in Sources */,
 				9435B2D81CFB824700B1EEF4 /* Task.swift in Sources */,
+				9435B2DC1CFB918200B1EEF4 /* NewReminder.swift in Sources */,
 				9435B2A61CFB823500B1EEF4 /* AppDelegate.swift in Sources */,
 				9435B2D71CFB824700B1EEF4 /* Model.swift in Sources */,
 			);
