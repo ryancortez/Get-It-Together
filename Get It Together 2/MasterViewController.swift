@@ -9,8 +9,6 @@
 import UIKit
 import EventKit
 
-
-
 class MasterViewController: UITableViewController {
 
     var eventStore: EKEventStore!
@@ -18,37 +16,22 @@ class MasterViewController: UITableViewController {
     
     var detailViewController: DetailViewController? = nil
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
-        if let split = self.splitViewController {
-            let controllers = split.viewControllers
-            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
-    }
-
     override func viewWillAppear(animated: Bool) {
-        
+        super.viewWillAppear(animated)
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        
         if !userDefaults.boolForKey("walkthroughPresented") {
-            
             showTutorial()
-            
             userDefaults.setBool(true, forKey: "walkthroughPresented")
             userDefaults.synchronize()
         }
-
         
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
-        super.viewWillAppear(animated)
-        
+        setupNavigationBar()
+        implementSplitScreen()
+        getRemindersFromSystem()
+         
+        }
+    
+    func getRemindersFromSystem() {
         self.eventStore = EKEventStore()
         self.reminders = [EKReminder]()
         self.eventStore.requestAccessToEntityType(EKEntityType.Reminder) { (granted: Bool, error: NSError?) -> Void in
@@ -66,6 +49,20 @@ class MasterViewController: UITableViewController {
                 print("The app is not permitted to access reminders, make sure to grant permission in the settings and try again")
             }
         }
+    }
+    
+    func setupNavigationBar() {
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject(_:)))
+        self.navigationItem.rightBarButtonItem = addButton
+    }
+    
+    func implementSplitScreen () {
+        if let split = self.splitViewController {
+            let controllers = split.viewControllers
+            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+        }
+        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
     }
 
     func showTutorial() {
