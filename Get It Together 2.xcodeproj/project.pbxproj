@@ -112,10 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				9435B2A51CFB823500B1EEF4 /* AppDelegate.swift */,
-				9435B2A71CFB823500B1EEF4 /* MasterViewController.swift */,
 				94212CFE1D245F00003F98B7 /* TutorialViewController.swift */,
-				9435B2DB1CFB918200B1EEF4 /* NewReminder.swift */,
+				9435B2A71CFB823500B1EEF4 /* MasterViewController.swift */,
 				9435B2A91CFB823500B1EEF4 /* DetailViewController.swift */,
+				9435B2DB1CFB918200B1EEF4 /* NewReminder.swift */,
 				9435B2D51CFB824700B1EEF4 /* Model.swift */,
 				9435B2D61CFB824700B1EEF4 /* Task.swift */,
 				9435B2D91CFB8BBA00B1EEF4 /* ReminderCell.swift */,

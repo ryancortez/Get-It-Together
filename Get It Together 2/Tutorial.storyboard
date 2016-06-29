@@ -18,8 +18,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.3612429351" green="0.57939018990000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gc8-af-ZXg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Omw-wN-P4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113" y="251"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="53H-RR-BLi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GHI-5R-mzv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MOw-m2-ygo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NFQ-uN-qPu" kind="relationship" relationship="rootViewController" id="hyB-3z-c3y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ke4-DV-7yZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="301" y="251"/>
         </scene>
