@@ -23,6 +23,8 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject(_:)))
@@ -34,6 +36,18 @@ class MasterViewController: UITableViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if !userDefaults.boolForKey("walkthroughPresented") {
+            
+            showTutorial()
+            
+            userDefaults.setBool(true, forKey: "walkthroughPresented")
+            userDefaults.synchronize()
+        }
+
+        
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
         
@@ -56,9 +70,10 @@ class MasterViewController: UITableViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func showTutorial() {
+        let stb = UIStoryboard(name: "Tutorial", bundle: nil)
+        let walkthrough = stb.instantiateViewControllerWithIdentifier("tutorialViewController") as! TutorialViewController
+        self.presentViewController(walkthrough, animated: true, completion: nil)
     }
 
     func insertNewObject(sender: AnyObject) {
