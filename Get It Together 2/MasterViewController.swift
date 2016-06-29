@@ -18,18 +18,26 @@ class MasterViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        showTutorialOnFirstLaunch()
+        setupNavigationBar()
+        implementSplitScreen()
+        getRemindersFromSystem()
+        
+        }
+    
+// MARK: - Inital Launch
+    
+    func showTutorialOnFirstLaunch() {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if !userDefaults.boolForKey("walkthroughPresented") {
             showTutorial()
             userDefaults.setBool(true, forKey: "walkthroughPresented")
             userDefaults.synchronize()
         }
-        
-        setupNavigationBar()
-        implementSplitScreen()
-        getRemindersFromSystem()
-         
-        }
+    }
+    
+// MARK: - Reminders
     
     func getRemindersFromSystem() {
         self.eventStore = EKEventStore()
@@ -51,10 +59,18 @@ class MasterViewController: UITableViewController {
         }
     }
     
+// MARK: - Helper Methods
+    
     func setupNavigationBar() {
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject(_:)))
         self.navigationItem.rightBarButtonItem = addButton
+    }
+    
+    func insertNewObject(sender: AnyObject) {
+        reminders.insert(EKReminder(), atIndex: 0)
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
     func implementSplitScreen () {
@@ -71,12 +87,7 @@ class MasterViewController: UITableViewController {
         self.presentViewController(tutorialViewController, animated: true, completion: nil)
     }
 
-    func insertNewObject(sender: AnyObject) {
-        reminders.insert(EKReminder(), atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    }
-
+   
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
